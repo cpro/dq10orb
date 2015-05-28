@@ -1,0 +1,54 @@
+- @version = '0.1'
+!!! 5
+%html
+	%head
+		%meta{charset: 'UTF-8'}/
+		%meta{'http-equiv' => 'Content-Style-Type', content: 'text/css'}/
+		%meta{'http-equiv' => 'Content-Script-Type', content: 'text/javascript'}/
+		- @home_uri = 'http://cpro.jp/dq10/orb/'
+		%link{rel: 'canonical', href: @home_uri}/
+		%meta{name: 'description', content: 'ドラゴンクエストX（ドラクエ10, DQ10, DQX）の達人のオーブ配置検討シミュレータ。'}/
+		
+		- @title = 'DQ10 達人のオーブシミュレータ'
+		%title= @title
+		
+		%link{rel: 'stylesheet', type: 'text/css', href: "./dq10orb.css?ver=#{@version}"}/
+		%link{rel: 'stylesheet', type: 'text/css', href: 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'}/
+		
+		%script{type: 'text/javascript', src: 'http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'}
+		%script{type: 'text/javascript', src: 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'}
+		-# %script{type: 'text/javascript', src: 'js/rawdeflate.min.js'}
+		-# %script{type: 'text/javascript', src: 'js/rawinflate.min.js'}
+		-# %script{type: 'text/javascript', src: 'js/shortcut.min.js'}
+		-# %script{type: 'text/javascript', src: 'js/jquery.socialbutton-1.9.1.min.js'}
+		%script{type: 'text/javascript', src: "./dq10orb.js?ver=#{@version}"}
+		-# :javascript
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-5127088-4', 'cpro.jp');
+			ga('send', 'pageview');
+	%body
+		#header
+			%h1
+				%a{href: @home_uri}= @title
+		#body-content
+			#board
+				%table#board-table.slate
+					- 6.times do |r|
+						%tr
+							- 6.times do |c|
+								%td{'data-x' => c, 'data-y' => r}
+				%table#slate-acceptor
+					- 2.times do |r|
+						%tr
+							- 2.times do |c|
+								%td{'data-x' => c, 'data-y' => r}
+			#slate-entries
+				%table#slate-entry-dummy.slate.single-slate
+					- 3.times do |r|
+						%tr
+							- 3.times do |c|
+								%td{'data-x' => c, 'data-y' => r}
